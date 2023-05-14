@@ -1,5 +1,5 @@
-import './App.css';
-import { useEffect, useState } from 'react';
+import "./App.css";
+import { useEffect, useState } from "react";
 import Item from "./Item";
 
 function App() {
@@ -7,16 +7,26 @@ function App() {
 
   useEffect(() => {
     fetch("http://localhost:3001/items")
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         setItems(data);
-      })
+      });
   }, []);
 
   return (
     <div className="App">
-      <div className="items">
-        { items.map((item, i) => <Item key={i} name={item.name} cpu={item.cpu} memory={item.memory} storage={item.storage} price={item.price}/>)}
+      <div className="item">
+        {items.map((item, i) => (
+          <Item
+            img={item.img}
+            key={i}
+            name={item.name}
+            cpu={item.cpu}
+            memory={item.memory}
+            storage={item.storage}
+            price={item.price}
+          />
+        ))}
       </div>
     </div>
   );
